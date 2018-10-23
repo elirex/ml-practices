@@ -6,6 +6,10 @@ import sklearn.datasets
 import sklearn.linear_model
 import matplotlib.pyplot as plt
 
+def print_accuracy(set_type, Y, predicted_Y):
+    print("{} accuracy: {}".format(set_type, 100 - np.mean(np.abs(predicted_Y -Y)) * 100))
+
+
 def sigmoid(z):
     """
     Arguments:
@@ -15,6 +19,7 @@ def sigmoid(z):
     """
     s = 1.0 / (1 + np.exp(-z))
     return s
+
 
 def load_catvnoncat_dataset():
     train_dataset = h5py.File("./data/train_catvnoncat.h5", "r")
