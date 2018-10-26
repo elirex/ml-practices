@@ -9,7 +9,7 @@ def sigmoid(Z):
     A - acatived by sigmoid, same shape as Z 
     cache - stored 'Z' for computing backpropagation
     """
-    A  = 1 / (1 + np.expt(-A))
+    A  = 1 / (1 + np.exp(-Z))
     cache = Z
     return A, cache
 
