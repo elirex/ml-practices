@@ -4,8 +4,7 @@ import tensorflow as tf
 
 
 def random_mini_batches(X, Y, mini_batch_size=64, seed=0):
-    """
-    Arguments:
+    """ Arguments:
     X - Input data, shape is (m, Hi, Wi, Ci)
     Y - True "label" vector, shape (1, number of samples)
     mini_batch_size - size of the mini-batches
