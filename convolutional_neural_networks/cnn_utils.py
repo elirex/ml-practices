@@ -1,7 +1,26 @@
 import numpy as np
 import math
 import tensorflow as tf
+import h5py
 
+def load_signs_dataset(path):
+    train_path = os.path.join(path, "train_signs.h5")
+    test_path = os.path.join(path, "test_signs.h5")
+
+    train_dataset = h5py.File(train_path, "r")
+    train_set_x = np.array(train_dataset["train_set_x"][:])
+    train_set_y = np.array(train_dataset["train_set_y"][:])
+    
+    test_dataset = h5py.File(test_path, "r")
+    test_set_x = np.array(test_dataset["test_set_x"][:])
+    test_set_y = np.array(test_dataset["test_set_y"][:])
+
+    classes = np.array(test_dataset["list_classes"][:])
+
+    train_set_y = train_set_y.reshape((1, train_set_y.shape[0]))
+    test_set_y = test_set_y.reshape((1, test_set_y.shape[0]))
+
+    return train_set_x, train_set_y, test_set_x, test_set_y, classes
 
 def random_mini_batches(X, Y, mini_batch_size=64, seed=0):
     """ Arguments:
